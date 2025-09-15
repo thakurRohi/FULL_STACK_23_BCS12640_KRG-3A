@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Filter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .product {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Product Filter Example</h2>
+
+  <select id="categoryFilter">
+    <option value="all">All Products</option>
+    <option value="electronics">Electronics</option>
+    <option value="clothing">Clothing</option>
+  </select>
+
+  <div id="productList"></div>
+
+  <script>
+    const productData = [
+      { name: "Laptop", category: "electronics", price: 999 },
+      { name: "Shirt", category: "clothing", price: 25 },
+      { name: "Headphones", category: "electronics", price: 199 }
+    ];
+
+    // Render initial products
+    renderProductList(productData);
+
+    document.getElementById('categoryFilter').addEventListener('change', (event) => {
+      const selectedCategory = event.target.value;
+      const filteredProducts = selectedCategory === 'all' 
+        ? productData 
+        : productData.filter(product => product.category === selectedCategory);
+
+      renderProductList(filteredProducts);
+    });
+
+    function renderProductList(productsToRender) {
+      const container = document.getElementById('productList');
+      container.innerHTML = productsToRender.map(product => `
+        <div class="product">
+          <h3>${product.name}</h3>
+          <p>$${product.price}</p>
+        </div>
+      `).join('');
+    }
+  </script>
+</body>
+</html>
