@@ -1,0 +1,6 @@
+com\blogapp\payload\ForgotPasswordDto.class
+com\blogapp\services\impl\FileServiceImpl.class
+com\blogapp\payload\UserDto.class
+com\blogapp\services\FileService.class
+com\blogapp\payload\RoleDto.class
+com\blogapp\services\UserService.class
